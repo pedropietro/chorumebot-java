@@ -5,7 +5,8 @@ COPY . /app
 RUN mvn clean compile assembly:single
 
 # Stage 2: Run Stage
-FROM openjdk:21-slim
+# OpenJDK docker images are deprecated.
+FROM amazoncorretto:21-alpine
 WORKDIR /app
 COPY --from=build /app/target/*.jar /app/
 CMD ["java", "-jar", "chorumebot-1.0-SNAPSHOT-jar-with-dependencies.jar"]

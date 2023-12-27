@@ -2,7 +2,6 @@ package tech.chorume.bot.core.containers;
 
 import tech.chorume.bot.core.containers.strategys.BaseStrategy;
 
-import java.net.URL;
 import java.util.HashSet;
 import java.util.Set;
 

@@ -6,8 +6,8 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Essa anotação determina que esse Componente é um Builder de Comando e, por conta disso,
- * será carregado pela aplicação e usado para definir os comandos do bot.
+ * Determine that any class annotated with it will be loaded into the application and used to build
+ * discord commands and handlers.
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)

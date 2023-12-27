@@ -26,9 +26,7 @@ public class DiscordBotConfigurationDefault implements DiscordBotConfiguration {
         return token;
     }
     /**
-     * Define os gateways padrões do Bot Discord. Por padrão, ele usa os seguintes Gateways:
-     * - GUILD_MESSAGES
-     * - DIRECT_MESSAGES
+     * Default gateways
      * @return {@link Collection<GatewayIntent>}
      */
     @Override
@@ -38,8 +36,7 @@ public class DiscordBotConfigurationDefault implements DiscordBotConfiguration {
     }
 
     /**
-     * Define os listeners padrões do Bot Discord. Por padrão, ele registra o dispatcher default do bot, que tem um mapa
-     * que lida com todos os comandos previamente determinados.
+     * Define only the DispatcherListener, which will be responsible for handling all Slash Command Events and delegating them to their respective handlers.
      * @param handlersMap
      * @return {@link Collection<ListenerAdapter>}
      */

@@ -8,19 +8,24 @@ import java.util.Map;
 
 public interface DiscordBotConfiguration {
     /**
-     * Recupera o token do Discord BOT.
-     * @return {@link String}
+     * Retrieves the Discord token used for authentication.
+     *
+     * @return The Discord token as a {@link String}.
      */
     String getDiscordToken();
     /**
-     * Determina quais intents o bot precisa.
-     * @return {@link Collection<GatewayIntent>}
+     * Retrieves the collection of gateway intents required by the application.
+     *
+     * @return A collection of {@link GatewayIntent}.
      */
     Collection<GatewayIntent> getGatewayIntents();
 
     /**
-     * Determina quais listeners o bot irá iniciar e oferece, como opção, os handlers definidos na aplicação.
-     * @return {@link Collection<ListenerAdapter>}
+     * Retrieves the collection of event listeners that will be registered
+     * and run when the application starts.
+     *
+     * @param handlersMap A map of slash command names to their corresponding handlers.
+     * @return A collection of {@link EventListener}.
      */
     Collection<EventListener> getListeners(Map<String, SlashCommandHandler> handlersMap);
 }

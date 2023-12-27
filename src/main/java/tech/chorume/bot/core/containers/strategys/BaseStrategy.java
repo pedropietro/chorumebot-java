@@ -42,13 +42,13 @@ public abstract class BaseStrategy<T>{
                 return null;
             }
             if (!classApplyInterfaceTarget(classTarget)) {
-                throw new RuntimeException("Classe " + fqn + " anotada com " + annotation + " deve aplicar a interface " + mainInterface);
+                throw new RuntimeException("Class " + fqn + " annotated with " + annotation + " should apply " + mainInterface);
             }
             var defaultConstructor = classTarget.getDeclaredConstructor();
             defaultConstructor.setAccessible(true);
             return defaultConstructor.newInstance();
         } catch (NoSuchMethodException noSuchMethodException) {
-            throw new RuntimeException("O construtor default deve ser informado para o carregamento automatico da classe -> " + fqn);
+            throw new RuntimeException("Default constructor must be informed to automatically load it -> " + fqn);
         } catch (InvocationTargetException | InstantiationException | IllegalAccessException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }

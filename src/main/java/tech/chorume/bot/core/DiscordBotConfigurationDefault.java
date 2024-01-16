@@ -1,28 +1,25 @@
 package tech.chorume.bot.core;
 
-import io.github.cdimascio.dotenv.Dotenv;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.ResourceBundle;
+import java.util.Set;
+
 import net.dv8tion.jda.api.hooks.EventListener;
-import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import tech.chorume.bot.core.interfaces.DiscordBotConfiguration;
 import tech.chorume.bot.core.interfaces.SlashCommandHandler;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 public class DiscordBotConfigurationDefault implements DiscordBotConfiguration {
-    private Dotenv dotenv;
+
     public DiscordBotConfigurationDefault() {
-        dotenv = Dotenv.configure()
-                .ignoreIfMissing()
-                .filename(".env")
-                .load();
     }
     @Override
     public String getDiscordToken() {
-        var token = dotenv.get("bot.token");
+
+    	ResourceBundle bundle = ResourceBundle.getBundle("bot");
+    	var token = bundle.getString("bot.token");
         return token;
     }
     /**
@@ -43,5 +40,6 @@ public class DiscordBotConfigurationDefault implements DiscordBotConfiguration {
     @Override
     public Collection<EventListener> getListeners(Map<String, SlashCommandHandler> handlersMap) {
         return List.of(new DispatcherListener(handlersMap));
-    }
+    }  
+
 }
